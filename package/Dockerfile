@@ -15,6 +15,7 @@ FROM alpine:3.12
 RUN apk add -U --no-cache bash bash-completion jq
 RUN echo 'shell:x:1000:1000:shell,,,:/home/shell:/bin/bash' > /etc/passwd && \
     echo 'shell:x:1000:' > /etc/group && \
+    echo 'root:x:0:root,shell' >> /etc/group && \
     mkdir /home/shell && \
     echo '. /etc/profile.d/bash_completion.sh' >> /home/shell/.bashrc && \
     echo 'alias k="kubectl"' >> /home/shell/.bashrc && \
